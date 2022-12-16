@@ -1,6 +1,7 @@
 package pages.profile;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import pages.base.BasePage;
 
@@ -38,17 +39,22 @@ public class Stack_Profile_page extends BasePage {
 
     public Stack_Profile_page EditProfile() throws InterruptedException {
         driver.findElement(EDIT_PROFILE_BTN).click();
-        driver.findElement(PROFILE_DISPLAY_NAME).sendKeys("AutoTest" + n);
+        driver.findElement(PROFILE_LOCATION).sendKeys((Keys.COMMAND + "a" + Keys.DELETE));
         driver.findElement(PROFILE_LOCATION).sendKeys("Selenium" +n);
+        driver.findElement(PROFILE_TITLE).sendKeys((Keys.COMMAND + "a" + Keys.DELETE));
         driver.findElement(PROFILE_TITLE).sendKeys("Write Selenium test" +n);
+        driver.findElement(PROFILE_ABOUT_ME).sendKeys((Keys.COMMAND + "a" + Keys.DELETE));
         driver.findElement(PROFILE_ABOUT_ME).sendKeys("About me testcase" +n);
-        driver.findElement(PROFILE_WEB_SITE_LINK).sendKeys("google.com" +n);
+        driver.findElement(PROFILE_WEB_SITE_LINK).sendKeys((Keys.COMMAND + "a" + Keys.DELETE));
+        driver.findElement(PROFILE_WEB_SITE_LINK).sendKeys("google.com");
+        driver.findElement(PROFILE_FULL_NAME).sendKeys((Keys.COMMAND + "a" + Keys.DELETE));
         driver.findElement(PROFILE_FULL_NAME).sendKeys("Auto Test Selenium Java" +n);
         driver.findElement(PROFILE_SAVE_BUTTON).click();
-        Thread.sleep(2000);
-        String NewDisplayName = driver.findElement(By.xpath("//*[@id=\"mainbar-full\"]/div[1]/div[1]/div/div/div[1]")).getText();
-        assertTrue(NewDisplayName.contains("AutoTest" + n));
-        System.out.println(NewDisplayName);
+        Thread.sleep(5000);
+        driver.findElement(PROFILE_SAVE_BUTTON).click();
+        String title = driver.findElement(By.xpath("//*[@id=\"mainbar-full\"]/div[1]/div[1]/div/div[2]")).getText();
+        assertTrue(title.contains("Write Selenium test" +n));
+        System.out.println(title);
 
 
         return this;
