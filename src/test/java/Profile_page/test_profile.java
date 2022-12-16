@@ -13,7 +13,7 @@ public class test_profile extends BaseTest {
         Stack_homepage_login.Auth();
         stack_profile_page.OpenProfile();
         stack_profile_page.EditProfile();
-
+        System.out.println("qwe");
     }
 
 }
